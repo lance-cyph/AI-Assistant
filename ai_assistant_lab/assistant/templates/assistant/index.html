@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEMESIS AI</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts for modern typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="manifest" href="/static/manifest.json">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body class="bg-dark text-white">
+    <!-- Offline Alert -->
+    <div id="offline-alert" class="alert alert-danger text-center d-none sticky-top mb-0 rounded-0 border-0" role="alert">
+        You are offline. PWA offline mode is active.
+    </div>
+
+    <div class="d-flex flex-column vh-100">
+        <!-- Header with Nemesis Icon -->
+        <header class="p-3 d-flex justify-content-between align-items-center border-bottom border-secondary">
+            <h5 class="mb-0 fw-semibold d-flex align-items-center gap-2 text-danger">
+                <!-- Jagged nemesis star brand logo -->
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L14.8 8.5L21.5 8L16.8 12.8L19.5 19.5L12 15.5L4.5 19.5L7.2 12.8L2.5 8L9.2 8.5L12 2Z" fill="#ff4d4d"/>
+                </svg>
+                NEMESIS <span class="fs-6 text-muted font-monospace">(the nemesis of Gemini)</span>
+            </h5>
+            <!-- Interactive App Logo badge -->
+            <div class="app-logo-badge d-flex align-items-center gap-2">
+                <div class="app-logo">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12" cy="12" r="11" fill="url(#nemesisGrad)" />
+                        <path d="M12 4L14.3 9.3L20 8.9L16 12.8L18.3 18.5L12 15.1L5.7 18.5L8 12.8L4 8.9L9.7 9.3L12 4Z" fill="#ffffff"/>
+                        <defs>
+                            <linearGradient id="nemesisGrad" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
+                                <stop offset="0%" stop-color="#4a154b"/>
+                                <stop offset="100%" stop-color="#b81d24"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Chat Area -->
+        <main id="chat-container" class="flex-grow-1 overflow-auto d-flex flex-column align-items-center pb-4 pt-2">
+            <div id="chat-wrapper" class="w-100 d-flex flex-column">
+                <!-- Initial Greeting with Nemesis Avatar -->
+                <div class="message assistant d-flex gap-3">
+                    <div class="avatar">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L14.8 8.5L21.5 8L16.8 12.8L19.5 19.5L12 15.5L4.5 19.5L7.2 12.8L2.5 8L9.2 8.5L12 2Z" fill="#ff4d4d"/>
+                        </svg>
+                    </div>
+                    <div class="content fw-medium" style="font-size: 1.1rem; color: #ff9e9e;">
+                        Greetings, Lance. Ready to face the challenge today? Let's see what you’ve got.
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Floating Input Footer -->
+        <footer class="p-3 d-flex flex-column align-items-center bg-dark">
+            <div class="input-wrapper position-relative w-100">
+                <form id="chat-form" class="m-0">
+                    {% csrf_token %}
+                    <textarea id="prompt-input" class="form-control text-white" rows="1" placeholder="Challenge NEMESIS..."></textarea>
+                    <button type="submit" id="send-btn" class="send-btn position-absolute border-0 bg-transparent">
+                        <!-- Paper plane send icon -->
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ff4d4d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="22" y1="2" x2="11" y2="13"></line>
+                            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+            <div class="text-center mt-3 text-muted" style="font-size: 0.75rem;">
+                NEMESIS will challenge you. Tread carefully. Check important info.
+            </div>
+        </footer>
+    </div>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
